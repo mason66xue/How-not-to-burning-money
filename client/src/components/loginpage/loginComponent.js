@@ -1,43 +1,80 @@
 
 // login page
 
-// pages/Login.js
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Button, Checkbox, Form, Input } from 'antd';
+const onFinish = (values) => {
+    console.log('Success:', values);
+};
+const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+};
+const Login = () => (
+    <Form
+        name="basic"
+        labelCol={{
+            span: 8,
+        }}
+        wrapperCol={{
+            span: 16,
+        }}
+        style={{
+            maxWidth: 600,
+        }}
+        initialValues={{
+            remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+    >
+        <Form.Item
+            label="Username"
+            name="username"
+            rules={[
+                {
+                    required: true,
+                    message: 'Please input your username!',
+                },
+            ]}
+        >
+            <Input />
+        </Form.Item>
 
-function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const history = useHistory();
+        <Form.Item
+            label="Password"
+            name="password"
+            rules={[
+                {
+                    required: true,
+                    message: 'Please input your password!',
+                },
+            ]}
+        >
+            <Input.Password />
+        </Form.Item>
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+        <Form.Item
+            name="remember"
+            valuePropName="checked"
+            wrapperCol={{
+                offset: 8,
+                span: 16,
+            }}
+        >
+            <Checkbox>Remember me</Checkbox>
+        </Form.Item>
 
-        // Make a request to your API to log the user in
-        // ...
-        // Ask back end pros about this!!!!
-
-        // Redirect the user to the home page after a successful login
-        history.push('/');
-    };
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                placeholder="Email"
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                placeholder="Password"
-            />
-            <button type="submit">Login</button>
-        </form>
-    );
-}
+        <Form.Item
+            wrapperCol={{
+                offset: 8,
+                span: 16,
+            }}
+        >
+            <Button type="primary" htmlType="submit">
+                Submit
+            </Button>
+        </Form.Item>
+    </Form>
+);
 
 export default Login;
