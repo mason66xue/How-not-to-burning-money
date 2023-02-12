@@ -1,5 +1,5 @@
 const {Schema, model} = require('mongoose');
-import {transactionSchema} from './Transaction.js';
+
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
@@ -24,7 +24,10 @@ const userSchema = new Schema({
         type: Date,
         default: Date.now,
     },
-    transactions: [transactionSchema]
+    transactions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Transaction'
+    }]
 
 },
 {
