@@ -4,10 +4,16 @@ const parallax = document.querySelector('.parallax');
 
 let currentIndex = 0;
 
+testimonialsArray.forEach((testimonial, index) => {
+  if (index !== 0) {
+    testimonial.style.display = 'none';
+  }
+});
+
 testimonialsArray[currentIndex].style.display = 'block';
 
 window.addEventListener('scroll', () => {
-  const offset = window.pageYOffset;
+  let offset = window.pageYOffset;
   parallax.style.backgroundPositionY = `${offset * 0.7}px`;
 });
 
@@ -16,4 +22,3 @@ setInterval(() => {
   currentIndex = (currentIndex + 1) % testimonialsArray.length;
   testimonialsArray[currentIndex].style.display = 'block';
 }, 3000);
-
