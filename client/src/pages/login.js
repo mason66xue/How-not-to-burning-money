@@ -1,12 +1,12 @@
 
 
-import Login from '../components/loginpage/loginComponent';
+import LoginForm from '../components/loginpage/loginComponent';
 
-function SignInPage() {
+function LoginPage() {
     return (
         <div>
-            <h1>Sign In</h1>
-            <Login />
+            <h1>Sign In/Sign Up</h1>
+            <LoginForm />
         </div>
     );
 }

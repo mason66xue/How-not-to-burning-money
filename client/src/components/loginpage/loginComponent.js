@@ -1,80 +1,70 @@
 
 // login page
 
-import { Button, Checkbox, Form, Input } from 'antd';
-const onFinish = (values) => {
-    console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-};
-const Login = () => (
-    <Form
-        name="basic"
-        labelCol={{
-            span: 8,
-        }}
-        wrapperCol={{
-            span: 16,
-        }}
-        style={{
-            maxWidth: 600,
-        }}
-        initialValues={{
-            remember: true,
-        }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-    >
-        <Form.Item
-            label="Username"
-            name="username"
-            rules={[
-                {
-                    required: true,
-                    message: 'Please input your username!',
-                },
-            ]}
-        >
-            <Input />
-        </Form.Item>
+import React, { useState } from 'react';
 
-        <Form.Item
-            label="Password"
-            name="password"
-            rules={[
-                {
-                    required: true,
-                    message: 'Please input your password!',
-                },
-            ]}
-        >
-            <Input.Password />
-        </Form.Item>
+import classes from './Card.module.css';
+import Card from '../userinterface/Card';
 
-        <Form.Item
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{
-                offset: 8,
-                span: 16,
-            }}
-        >
-            <Checkbox>Remember me</Checkbox>
-        </Form.Item>
+import React, { useState } from 'react';
+import axios from 'axios';
 
-        <Form.Item
-            wrapperCol={{
-                offset: 8,
-                span: 16,
-            }}
-        >
-            <Button type="primary" htmlType="submit">
-                Submit
-            </Button>
-        </Form.Item>
-    </Form>
-);
+function LoginForm() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
-export default Login;
+    const handleSubmit = event => {
+        event.preventDefault();
+        setIsLoading(true);
+
+        axios
+            .post('https://example.com/api/login', {
+                username,
+                password,
+            })
+            .then(response => {
+                setIsLoading(false);
+                // Handle successful login
+            })
+            .catch(error => {
+                setIsLoading(false);
+                setErrorMessage('Incorrect username or password. Please try again.');
+            });
+    };
+
+    return (
+        <Card>
+
+            <form className={classes.form} onSubmit={handleSubmit}>
+                <div className={classes.control}>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        value={username}
+                        onChange={event => setUsername(event.target.value)}
+                    />
+                </div>
+                <div className={classes.control}>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={event => setPassword(event.target.value)}
+                    />
+                </div>
+                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                {isLoading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <button type="submit">Submit</button>
+                )}
+            </form>
+        </Card>
+    );
+}
+
+export default LoginForm;
