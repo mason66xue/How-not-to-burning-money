@@ -1,5 +1,5 @@
-// this is the entry point for all models
-
 const User = require('./User');
+const Transaction = require('./Transaction');
+const Category = require('./Category');
 
-module.exports = {User};
+module.exports = {User, Transaction, Category};
