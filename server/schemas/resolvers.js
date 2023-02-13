@@ -7,7 +7,7 @@ const resolvers = {
         users: async () => {
             return User.find();
         },
-        users: async (parent, { userName }) => {
+        user: async (parent, { userName }) => {
             return User.findOne({ _id: userName });
         }
     },

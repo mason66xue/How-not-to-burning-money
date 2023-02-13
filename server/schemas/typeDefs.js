@@ -14,7 +14,7 @@ type User {
 type Transaction {
     _id: ID
     name: String!
-    amount: Int!
+    # amount: Int!
     date: String
     category: [Category]
 }
@@ -24,24 +24,27 @@ type Category {
     name: String!
 }
 
-type Query {
+type Auth {
+    token: ID!
     user: User
-    transactions: [Transaction]
+}
+
+type Query {
+    users: [User]
+    user(username:String!): User
+    transactions(username: String!): [Transaction]
 }
 
 type Mutation {
 
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addTransaction(transactionText: String!, transactionAmount: Int!): Transaction
-    removeTransaction(transactionId: ID!): Transaction
+    # addTransaction(transactionText: String!, transactionAmount: Int!): Transaction
+    # removeTransaction(transactionId: ID!): Transaction
 
    
 }
 
-type Auth {
-    token: ID!
-    user: User
-}
-
 `;
+
+module.exports = typeDefs;
