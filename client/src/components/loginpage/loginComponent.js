@@ -9,6 +9,7 @@ import Card from '../userinterface/Card';
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 function LoginForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -35,6 +36,7 @@ function LoginForm() {
     };
 
     return (
+
         <Card>
 
             <form className={classes.form} onSubmit={handleSubmit}>
@@ -60,7 +62,7 @@ function LoginForm() {
                 {isLoading ? (
                     <p>Loading...</p>
                 ) : (
-                    <button type="submit">Submit</button>
+                    <button type="submit">Log In</button>
                 )}
             </form>
         </Card>
