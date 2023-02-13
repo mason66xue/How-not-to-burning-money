@@ -1,9 +1,9 @@
 const {Schema, model} = require('mongoose');
-import {transactionSchema} from './Transaction.js';
+
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
-    username: {
+    userName: {
         type: String,
         required: true,
         unique: true,
@@ -20,7 +20,14 @@ const userSchema = new Schema({
         required: true,
         minlength: 5
     },
-    transactions: [transactionSchema]
+    createAt:{
+        type: Date,
+        default: Date.now,
+    },
+    transactions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Transaction'
+    }]
 
 },
 {
