@@ -12,6 +12,7 @@ function Income() {
             <div>
                 <h1>Income</h1>
                 <input type="number" value={income} onChange={e => setIncome(e.target.value)} />
+                <button>Set Income</button>
             </div>
         </Card>
     )

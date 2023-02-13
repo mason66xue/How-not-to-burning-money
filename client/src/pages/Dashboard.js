@@ -1,29 +1,31 @@
 // Dashboard Page
+
+import React from 'react';
+import Income from '../components/dashboard/Income';
+import Expense from '../components/dashboard/Expense';
+// import ExpenseList from '../components/dashboard/ExpenseList';
+
+
+
 const mockData = {
     income: 4000,
     expenses: [
-        { name: "Netflix Monthly Subscription", amount: 10.99 },
+        { expense: "Netflix Monthly Subscription", amount: 10.99 },
         {
-            name: "Spotify Monthly Subscription", amount: 9.99
+            expense: "Spotify Monthly Subscription", amount: 9.99
         },
         {
-            name: "Rent", amount: 1800
+            expense: "Rent", amount: 1800
         }
     ]
 }
 function Dashboard() {
     return (
         <div>
-            <h1>Dashboard</h1>
-            <h2>Income: ${mockData.income}</h2>
-            <h2>Expenses</h2>
-            <ul>
-                {mockData.expenses.map((expense, index) => (
-                    <li key={index}>
-                        {expense.name}: ${expense.amount}
-                    </li>
-                ))}
-            </ul>
+            <h1> My Dashboard</h1>
+            <Income />
+            <Expense expenses={mockData.expenses} />
+            {/* <ExpenseList expenses={mockData.expenses} /> */}
         </div>
     )
 
