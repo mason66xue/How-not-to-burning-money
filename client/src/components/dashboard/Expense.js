@@ -4,12 +4,12 @@ import Card from "../userinterface/Card";
 
 function Expense(props) {
     const [expense, setExpense] = useState('');
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState('');
 
     return (
         <Card>
             <div>
-                <h1>Expense</h1>
+                <h1>Add Expense</h1>
                 <input type="text" value={expense} onChange={e => setExpense(e.target.value)} />
                 <input type="number" value={amount} onChange={e => setAmount(e.target.value)} />
                 <button>Add Expense</button>
