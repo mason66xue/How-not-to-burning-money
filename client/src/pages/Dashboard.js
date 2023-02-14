@@ -3,6 +3,7 @@
 import React from 'react';
 import Income from '../components/dashboard/Income';
 import Expense from '../components/dashboard/Expense';
+import Savings from '../components/dashboard/Savings';
 // import ExpenseList from '../components/dashboard/ExpenseList';
 
 
@@ -17,8 +18,19 @@ const mockData = {
         {
             expense: "Rent", amount: 1800
         }
+    ],
+
+    savings: [
+        { savings: "Emergency Fund", amount: 1000 },
+        {
+            savings: "Vacation Fund", amount: 500
+        },
+        {
+            savings: "Car Fund", amount: 1000
+        }
     ]
 }
+
 function Dashboard() {
     return (
         <div>
@@ -26,6 +38,7 @@ function Dashboard() {
             <Income />
             <Expense expenses={mockData.expenses} />
             {/* <ExpenseList expenses={mockData.expenses} /> */}
+            <Savings savings={mockData.savings} />
         </div>
     )
 
