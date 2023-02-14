@@ -1,10 +1,15 @@
-import React from 'react';
+import React from 'react'
 import { Doughnut } from 'react-chartjs-2';
+import {Chart, ArcElement} from 'chart.js';
+import DonutLabels from './DonutLabels';
+import {chart_Data, getTotal} from '../helper/helper';
 
-const DonutChart = ({ data }) => {
-    return <Doughnut data={data} />;
-    
-};
+Chart.register(ArcElement);
 
-
-export default DonutChart;
+export default function DonutChart() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
