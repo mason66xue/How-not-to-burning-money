@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       {/* <DonutChart /> */}
-      <h1>Hello World</h1>
+      {/* <h1>Hello World</h1> */}
       <Dashboard />
 
     </div>
