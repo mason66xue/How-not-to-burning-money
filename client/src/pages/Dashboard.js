@@ -4,7 +4,8 @@ import React from 'react';
 import Income from '../components/dashboard/Income';
 import Expense from '../components/dashboard/Expense';
 import Savings from '../components/dashboard/Savings';
-// import ExpenseList from '../components/dashboard/ExpenseList';
+
+// import BudgetingForm from '../components/dashboard/BudgetingForm';
 
 
 
@@ -37,8 +38,8 @@ function Dashboard() {
             <h1> My Dashboard</h1>
             <Income />
             <Expense expenses={mockData.expenses} />
-            {/* <ExpenseList expenses={mockData.expenses} /> */}
             <Savings savings={mockData.savings} />
+            {/* <BudgetingForm /> */}
         </div>
     )
 
