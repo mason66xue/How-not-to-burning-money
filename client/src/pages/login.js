@@ -1,6 +1,6 @@
 
 
-import LoginForm from '../components/loginpage/loginComponent';
+import LoginForm from '../components/loginpage/LoginForm';
 
 function LoginPage() {
     return (

@@ -29,6 +29,13 @@ const config = {
 
 };
 
+// const clickLabel = (e) => {
+//   console.log(e);
+// }
+
+// const initLog = (chart) => {
+//   console.log(chart);
+// }
 
 
 
@@ -54,3 +61,6 @@ export default function DonutChart() {
     </Card>
   )
 }
+
+
+
