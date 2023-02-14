@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import { Doughnut } from 'react-chartjs-2';
+import DonutChart from './components/DonutChart';
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+      <DonutChart />
+
+      </div>
   );
 }
 
