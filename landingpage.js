@@ -1,6 +1,47 @@
+// const testimonials = document.querySelector('.testimonials');
+// const testimonialsArray = Array.from(testimonials.children);
+// const prevButton = document.querySelector('.prev-button');
+// const nextButton = document.querySelector('.next-button');
+
+// let currentIndex = 0;
+
+// testimonialsArray.forEach((testimonial, index) => {
+//   if (index !== 0) {
+//     testimonial.style.display = 'none';
+//   }
+// });
+
+// testimonialsArray[currentIndex].style.display = 'block';
+
+// prevButton.addEventListener('click', () => {
+//   testimonialsArray[currentIndex].style.display = 'none';
+//   currentIndex = (currentIndex - 1 + testimonialsArray.length) % testimonialsArray.length;
+//   testimonialsArray[currentIndex].style.display = 'block';
+// });
+
+// nextButton.addEventListener('click', () => {
+//   testimonialsArray[currentIndex].style.display = 'none';
+//   currentIndex = (currentIndex + 1) % testimonialsArray.length;
+//   testimonialsArray[currentIndex].style.display = 'block';
+// });
+
+// window.addEventListener('scroll', () => {
+//   let offset = window.pageYOffset;
+//   parallax.style.backgroundPositionY = `${offset * 0.7}px`;
+// });
+
+// setInterval(() => {
+//   testimonialsArray[currentIndex].style.display = 'none';
+//   currentIndex = (currentIndex + 1) % testimonialsArray.length;
+//   testimonialsArray[currentIndex].style.display = 'block';
+// }, 3000);
+
+
 const testimonials = document.querySelector('.testimonials');
 const testimonialsArray = Array.from(testimonials.children);
 const parallax = document.querySelector('.parallax');
+const prevButton = document.querySelector('.prev-button');
+const nextButton = document.querySelector('.next-button');
 
 let currentIndex = 0;
 
@@ -22,3 +63,15 @@ setInterval(() => {
   currentIndex = (currentIndex + 1) % testimonialsArray.length;
   testimonialsArray[currentIndex].style.display = 'block';
 }, 3000);
+
+prevButton.addEventListener('click', () => {
+  testimonialsArray[currentIndex].style.display = 'none';
+  currentIndex = (currentIndex - 1 + testimonialsArray.length) % testimonialsArray.length;
+  testimonialsArray[currentIndex].style.display = 'block';
+});
+
+nextButton.addEventListener('click', () => {
+  testimonialsArray[currentIndex].style.display = 'none';
+  currentIndex = (currentIndex + 1) % testimonialsArray.length;
+  testimonialsArray[currentIndex].style.display = 'block';
+});
