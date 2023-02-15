@@ -1,15 +1,10 @@
-import LoginForm from "./components/loginpage/LoginForm";
-import SignupForm from "./components/signup/SignupForm";
-import LandingPage from "./pages/LandingPage";
-import Dashboard from "./pages/Dashboard";
 
 const { Route, Routes } = require("react-router-dom");
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import Dashboard from "./pages/Dashboard";
 import Layout from "./components/layout/Layout";
-
-
-
-
-
+// import LandingPage from "./pages/LandingPage";
 
 
 
@@ -19,10 +14,10 @@ function App() {
 
     <Layout>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        {/* <Route path="/" element={<LandingPage />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </Layout>
 
