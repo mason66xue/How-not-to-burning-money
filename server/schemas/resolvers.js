@@ -9,7 +9,13 @@ const resolvers = {
         }
     },
     Mutation: {
-        addUser: async (parent, {username, email, password, income}) => {
+        addUser: async (parent, {username, email, password}) => {
+            let income;
+            if (args.income) {
+                income=args.income
+            } else {
+                income=0;
+            }
             const user = await User.create({username, email, password, income});
             const token = signToken(user);
             return {token, user};
@@ -31,7 +37,7 @@ const resolvers = {
             return { token, user };        
         },
         
-        setIncome: async (parent, {amount}, context) => {
+        setIncome: async (parent, {amount}, context ) => {
             if (context.user) { 
                 const user = await User.findOneAndUpdate(
                     {_id: context.user._id},
