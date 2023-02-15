@@ -1,48 +1,57 @@
-const {gql} = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 
 type User {
-    _id: ID
+    _id: ID!
     username: String!
     email: String!
     password: String!
-    createAt: String
-    transactions: [Transaction]!
+    income: Income
+    expenses: [Expense]!
+    savings: [Savings]!
 }
 
-type Transaction {
-    _id: ID
+type Income {
+    _id: ID!
+    amount: Int!
+}
+
+type Expense {
+    _id: ID!
     name: String!
-    # amount: Int!
-    date: String
-    category: [Category]
+    amount: Int!
+    # date: String!
 }
 
-type Category {
-    _id: ID
+type Savings {
+    _id: ID!
     name: String!
+    amount: Int!
+    # date: String!
 }
 
-type Auth {
-    token: ID!
-    user: User
-}
+
+
+# type Auth {
+#     token: ID!
+#     user: User
+# }
 
 type Query {
-    users: [User]
-    user(username:String!): User
-    transactions(username: String!): [Transaction]
+    getUser(email: String!): User
 }
 
 type Mutation {
+    # addUser(username: String!, email: String!, password: String!, income: Float!): Auth
+    # login(email: String!, password: String!): Auth
 
-    addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    # addTransaction(transactionText: String!, transactionAmount: Int!): Transaction
-    # removeTransaction(transactionId: ID!): Transaction
+    setIncome(amount: Float!): User
+    addExpense(name: String!, amount: Float!, date: String!): User
+    addSavings(name: String!, amount: Float!, date: String!): User
+    removeExpense(expenseId: ID!): User
+    removeSavings(savingsId: ID!): User
 
-   
 }
 
 `;
