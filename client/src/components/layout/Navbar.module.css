@@ -1,6 +1,6 @@
 /* Navbar styles */
 .header {
-    width: 100%;
+    width: 95%;
     height: 6rem;
     display: flex;
     align-items: center;
@@ -47,7 +47,20 @@
     margin-left: 0.5rem;
 }
 
-/* Responsive styles */
+
+/* Use a media query to change the flex direction to column when the screen width is smaller than 768px (you can adjust this value as needed) */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+}
+
+/* Responsive styles
 @media screen and (max-width: 768px) {
     .header {
         padding: 0 5%;
@@ -84,4 +97,4 @@
     .header.show ul {
         height: auto;
     }
-}
+} */
