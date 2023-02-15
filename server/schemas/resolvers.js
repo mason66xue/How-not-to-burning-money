@@ -15,20 +15,20 @@ const resolvers = {
             return {token, user};
         },
         login: async (parent, {email, password}) => {
-            const profile = await Profile.findOne({ email });
+            const user = await User.findOne({ email });
 
-            if (!profile) {
+            if (!user) {
               throw new AuthenticationError('No profile with this email found!');
             }
       
-            const correctPw = await profile.isCorrectPassword(password);
+            const correctPw = await user.isCorrectPassword(password);
       
             if (!correctPw) {
               throw new AuthenticationError('Incorrect password!');
             }
       
-            const token = signToken(profile);
-            return { token, profile };        
+            const token = signToken(user);
+            return { token, user };        
         },
         
         setIncome: async (parent, {amount}, context) => {
@@ -43,11 +43,11 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        addExpense: async (parent, {name, amount, date}, context) => {
+        addExpense: async (parent, {name, amount}, context) => {
             if (context.user) {
                 const user = await User.findOneAndUpdate(
                     {_id: context.user._id},
-                    {$push: {expenses: {name, amount, date}}},
+                    {$push: {expenses: {name, amount}}},
                     {new: true}
                 );
                 return user;
@@ -55,11 +55,11 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        addSavings: async (parent, {name, amount, date}, context) => {
+        addSavings: async (parent, {name, amount}, context) => {
             if (context.user) {
                 const user = await User.findOneAndUpdate(
                     {_id: context.user._id},
-                    {$push: {savings: {name, amount, date}}},
+                    {$push: {savings: {name, amount}}},
                     {new: true}
                 );
                 return user;

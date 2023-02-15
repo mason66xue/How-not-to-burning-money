@@ -21,7 +21,8 @@ const userSchema = new Schema({
   },
   income:[
     {
-      type: Number
+      type: Number,
+      default: 0 
     }
   ],
   expenses: [

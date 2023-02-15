@@ -43,12 +43,12 @@ type Query {
 }
 
 type Mutation {
-    addUser(username: String!, email: String!, password: String!, income: Float!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
     setIncome(amount: Float!): User
-    addExpense(name: String!, amount: Float!, date: String!): User
-    addSavings(name: String!, amount: Float!, date: String!): User
+    addExpense(name: String!, amount: Float!): User
+    addSavings(name: String!, amount: Float! ): User
     removeExpense(expenseId: ID!): User
     removeSavings(savingsId: ID!): User
 
