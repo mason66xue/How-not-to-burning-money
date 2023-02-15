@@ -22,6 +22,100 @@
   font-size: 18px;
 }
 
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.nav a:hover {
+  color: #ccc;
+  text-decoration: underline;
+}
+
+.nav-dropdown a {
+  color: #fff;
+}
+
+.nav-dropdown a:hover {
+  color: #ccc;
+}
+
+/* Media query for the header section */
+
+/* Hide navigation links on smaller screens */
+.nav {
+  display: none;
+}
+
+/* Show hamburger button on smaller screens */
+.hamburger {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  /* Hide header title on smaller screens */
+  .header-title {
+    display: none;
+  }
+
+  /* Show navigation links on smaller screens */
+  .nav {
+    display: none;
+  }
+
+  /* Hide hamburger button on larger screens */
+  .nav.open,
+  .hamburger.open {
+    display: none;
+  }
+
+  /* Show hamburger button on smaller screens */
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+
+/* Show dropdown on click */
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #333;
+  padding: 20px;
+}
+
+.nav-dropdown a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.hamburger.open + .nav-dropdown {
+  display: block;
+}
+
+/* Show navigation links on full-sized screens */
+@media only screen and (min-width: 769px) {
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .nav.open {
+    display: none;
+  }
+}
+
 /* .header {
   position: fixed;
   top: 0px;
@@ -44,26 +138,6 @@
 }
 
 /* Add styles for the parallax section */
-
-/* .parallax {
-  background-image: url("./images/parallax.jpg");
-  background-size: cover;
-  height: 500px;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.parallax img {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
 
 .parallax {
   position: relative;
@@ -112,23 +186,54 @@
 
 /* Add styles for the about us section */
 
+.about-us-image {
+  max-width: 200px;
+  text-align: center;
+  width: 25%;
+}
+
 .about-us-image img {
-  width: 200px;
-  height: 200px;
+  max-width: 200px;
+  min-width: 200px;
+  max-height: 200px;
+  min-height: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .about-us-container {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   padding: 0 20px;
 }
 
 .image-name-description {
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .about-us-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .about-us-image {
+    width: 50%;
+  }
+}
+  
+@media screen and (max-width: 480px) {
+  .about-us-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .about-us-image {
+    width: 100%;
+  }
 }
 
 /* Add styles for the testimonials section */
