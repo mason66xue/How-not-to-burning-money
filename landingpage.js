@@ -36,3 +36,23 @@ nextButton.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % testimonialsArray.length;
   testimonialsArray[currentIndex].style.display = 'block';
 });
+
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  nav.classList.toggle('open');
+});
+
+document.addEventListener('click', function(event) {
+  // get the dropdown and hamburger elements
+  const dropdown = document.querySelector('.nav');
+  const hamburger = document.querySelector('.hamburger');
+
+  // if the clicked element is not inside the dropdown or hamburger, close the dropdown
+  if (!dropdown.contains(event.target) && event.target !== hamburger) {
+    dropdown.classList.remove('open');
+    hamburger.classList.remove('open');
+  }
+});
