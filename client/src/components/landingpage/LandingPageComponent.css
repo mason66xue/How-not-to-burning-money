@@ -1,0 +1,394 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: #333;
+    color: #fff;
+    padding: 0 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+body {
+    background-color: #D3D3D3
+}
+
+p {
+    font-family: cursive;
+}
+
+h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+h4 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.header-title {
+    color: #fff;
+    margin: 0;
+}
+
+.header-nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.nav a:hover {
+    color: #ccc;
+    text-decoration: underline;
+}
+
+.nav-dropdown a {
+    color: #fff;
+}
+
+.nav-dropdown a:hover {
+    color: #ccc;
+}
+
+/* Media query for the header section */
+
+/* Hide navigation links on smaller screens */
+.nav {
+    display: none;
+}
+
+/* Show hamburger button on smaller screens */
+.hamburger {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+
+    /* Hide header title on smaller screens */
+    .header-title {
+        display: none;
+    }
+
+    /* Show navigation links on smaller screens */
+    .nav {
+        display: none;
+    }
+
+    /* Hide hamburger button on larger screens */
+    .nav.open,
+    .hamburger.open {
+        display: none;
+    }
+
+    /* Show hamburger button on smaller screens */
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
+/* Show dropdown on click */
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #333;
+    padding: 20px;
+}
+
+.nav-dropdown a {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.hamburger.open+.nav-dropdown {
+    display: block;
+}
+
+/* Show navigation links on full-sized screens */
+@media only screen and (min-width: 769px) {
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .nav.open {
+        display: none;
+    }
+}
+
+/* .header {
+    position: fixed;
+    top: 0px;
+  } */
+
+.hr {
+    color: black;
+}
+
+/* Add styles for the main section */
+.hero img {
+    height: 50%;
+    width: 100%;
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.hero h1 {
+    margin: 0;
+}
+
+/* Add styles for the parallax section */
+
+.parallax {
+    position: relative;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/parallax.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.parallax-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+/* Add styles for the stock images section */
+
+.stock-image {
+    text-align: center;
+    width: 10%;
+}
+
+.stock-images img {
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    border-radius: 10%;
+    object-fit: cover;
+}
+
+.stock-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px 0 10px 0;
+
+}
+
+@media screen and (max-width: 768px) {
+    .stock-image {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stock-image {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .stock-image {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stock-image {
+        width: 100%;
+    }
+}
+
+/* Add styles for the about us section */
+
+.about-us-image {
+    max-width: 200px;
+    text-align: center;
+    width: 25%;
+}
+
+.about-us-image img {
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 0 20px;
+}
+
+.image-name-description {
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .about-us-image {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .about-us-image {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-us-image {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .about-us-image {
+        width: 100%;
+    }
+}
+
+/* Add styles for the testimonials section */
+
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.testimonial h4 {
+    text-align: center;
+    margin: 20px;
+    padding: 0 10px;
+}
+
+.testimonial p {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.testimonial img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    margin: 0 auto;
+}
+
+/*Add styles for the testimonial navigation section */
+.testimonials-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.testimonials-navigation btn {
+    align-items: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.prev-button,
+.next-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* Add styles for the contact us section */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+form label,
+form input,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+}
+
+form button {
+    width: 100%;
+    padding: 8px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* Add styles for the footer section */
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
+    background-color: #333;
+    color: #fff;
+    padding: 0 20px;
+    text-align: center;
+    font-family: cursive;
+}

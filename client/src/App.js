@@ -1,11 +1,10 @@
-import LoginForm from "./components/loginpage/LoginForm";
-import SignupForm from "./components/signup/SignupForm";
+
+const { Route, Routes } = require("react-router-dom");
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 import Dashboard from "./pages/Dashboard";
-
-
-
-
-
+import Layout from "./components/layout/Layout";
+import LandingPage from "./pages/LandingPage";
 
 
 
@@ -13,13 +12,14 @@ import Dashboard from "./pages/Dashboard";
 function App() {
   return (
 
-    <div>
-
-      <SignupForm />
-      <LoginForm />
-      <Dashboard />
-
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
+    </Layout>
 
   );
 }
