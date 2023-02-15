@@ -172,16 +172,50 @@
 
 /* Add styles for the stock images section */
 
-.stock-images {
-  display: flex;
-  justify-content: space-between;
+.stock-image {
+  text-align: center;
+  width: 10%;
 }
 
 .stock-images img {
-  width: 400px;
-  height: 300px;
-  justify-content: space-between;
-  padding: 20px 0;
+  max-width: 200px;
+  min-width: 200px;
+  max-height: 200px;
+  min-height: 200px;
+  border-radius: 10%;
+  object-fit: cover;
+}
+
+.stock-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px 0 10px 0;
+
+}
+
+@media screen and (max-width: 768px) {
+  .stock-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stock-image {
+    width: 50%;
+  }
+}
+  
+@media screen and (max-width: 480px) {
+  .stock-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stock-image {
+    width: 100%;
+  }
 }
 
 /* Add styles for the about us section */
@@ -270,65 +304,28 @@
   padding-bottom: 10px;
   margin: 0 auto;
 }
-Add styles for the testimonial navigation section */
-.testimonial-navigation {
-  text-align: center;
+/*Add styles for the testimonial navigation section */
+.testimonials-navigation {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  align-items: center;
+  margin-top: 20px;
 } 
 
-.testimonial-navigation btn {
+.testimonials-navigation btn {
   align-items: center;
-}
-
-.prev-btn {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   margin: 0 auto;
 }
 
-.next-btn {
-  text-align: center;
+.prev-button, .next-button {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 0 auto;
-}
-
-.arrows {
-  position: relative;
-  margin-top: 20px;
-}
-
-.arrow-left, .arrow-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  align-items: center;
   width: 30px;
   height: 30px;
+  margin: 0 10px;
   cursor: pointer;
-}
-
-.arrow-left {
-  left: 0;
-  background-image: url('left-chevron.png');
-}
-
-.arrow-right {
-  right: 0;
-  background-image: url('right-chevron.png');
-}
-
-.arrow-left::before {
-  content: '\2190';
-}
-
-.arrow-right::after {
-  content: '\2192';
 }
 
 /* Add styles for the contact us section */
