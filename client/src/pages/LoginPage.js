@@ -1,5 +1,5 @@
 
-import LoginForm from '../components/login/LoginForm';
+import LoginForm from "../components/login/LoginForm";
 
 function LoginPage() {
     return (
@@ -11,3 +11,4 @@ function LoginPage() {
 }
 
 export default LoginPage;
+

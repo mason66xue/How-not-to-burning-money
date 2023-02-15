@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import classes from './Navbar.module.css';
 
-//create nav bar elem
 
 function Navbar() {
 
