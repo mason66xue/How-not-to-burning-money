@@ -48,6 +48,17 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
+        addTransaction: async (parent, { name, amount, date }) => {
+            const transaction = await Transaction.create({ name, amount, date });
+            await User.findOneAndUpdate(
+                { _id: user._id},
+                { $push: { transactions: transaction._id } }
+            );
+            return transaction;
+        },
+        removeTransaction: async (parent, { transactionId }) => {
+            return Transaction.findOneAndDelete({ _id: transactionId });
+        }   
 
         addExpense: async (parent, {name, amount}, context) => {
             if (context.user) {
