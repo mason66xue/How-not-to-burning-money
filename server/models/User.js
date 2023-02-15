@@ -19,12 +19,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  income:[
+  income:
     {
       type: Number,
       default: 0 
-    }
-  ],
+    },
   expenses: [
     {
       name: {
