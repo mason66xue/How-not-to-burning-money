@@ -33,18 +33,18 @@ type Savings {
 
 
 
-# type Auth {
-#     token: ID!
-#     user: User
-# }
+type Auth {
+    token: ID!
+    user: User
+}
 
 type Query {
     getUser(email: String!): User
 }
 
 type Mutation {
-    # addUser(username: String!, email: String!, password: String!, income: Float!): Auth
-    # login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, income: Float!): Auth
+    login(email: String!, password: String!): Auth
 
     setIncome(amount: Float!): User
     addExpense(name: String!, amount: Float!, date: String!): User
