@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "react-parallax": "^3.5.1",
+    "chartjs-plugin-outerlabels": "^2.0.0"
   }
 }
