@@ -9,10 +9,23 @@ const resolvers = {
         }
     },
     Mutation: {
-        addUser: async (parent, {username, email, password, income}) => {
-            const user = await User.create({username, email, password, income});
-            const token = signToken(user);
-            return {token, user};
+        addUser: async (parent, args) => {
+            let {username, email, password} = args;
+            let income;
+            if (args.income) {
+                income=args.income
+            } else {
+                income=0;
+            }
+            try {
+                const user = await User.create({username, email, password, income});
+                const token = signToken(user);
+                return {token, user};
+            }catch(err) {
+                console.log(err);
+                throw new AuthenticationError('Something went wrong');
+            }
+            
         },
         login: async (parent, {email, password}) => {
             const user = await User.findOne({ email });
@@ -31,28 +44,22 @@ const resolvers = {
             return { token, user };        
         },
         
-        setIncome: async (parent, {amount}, context) => {
+        setIncome: async (parent, {amount}, context ) => {
             if (context.user) { 
-                const user = await User.findOneAndUpdate(
-                    {_id: context.user._id},
-                    {$set: {income: amount}},
-                    {new: true}
-                );
-                return user;
+                try{
+                    const user = await User.findOneAndUpdate(
+                        {_id: context.user._id},
+                        {$set: {income: amount}},
+                        {new: true}
+                    );
+                    return user;
+                } catch(err) {
+                    console.log(err);
+                    throw new Error('Something went wrong finding and updating the user and setting the amount');
+                }
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        addTransaction: async (parent, { name, amount, date }) => {
-            const transaction = await Transaction.create({ name, amount, date });
-            await User.findOneAndUpdate(
-                { _id: user._id},
-                { $push: { transactions: transaction._id } }
-            );
-            return transaction;
-        },
-        removeTransaction: async (parent, { transactionId }) => {
-            return Transaction.findOneAndDelete({ _id: transactionId });
-        }   
 
         addExpense: async (parent, {name, amount}, context) => {
             if (context.user) {

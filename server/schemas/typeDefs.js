@@ -7,15 +7,11 @@ type User {
     username: String!
     email: String!
     password: String!
-    income: Income
+    income: Int
     expenses: [Expense]!
     savings: [Savings]!
 }
 
-type Income {
-    _id: ID!
-    amount: Int!
-}
 
 type Expense {
     _id: ID!
@@ -43,10 +39,10 @@ type Query {
 }
 
 type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, income: Int): Auth
     login(email: String!, password: String!): Auth
 
-    setIncome(amount: Float!): User
+    setIncome(amount: Int!): User
     addExpense(name: String!, amount: Float!): User
     addSavings(name: String!, amount: Float! ): User
     removeExpense(expenseId: ID!): User
