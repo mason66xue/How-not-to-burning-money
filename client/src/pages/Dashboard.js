@@ -4,7 +4,10 @@ import React from 'react';
 import Income from '../components/dashboard/Income';
 import Expense from '../components/dashboard/Expense';
 import Savings from '../components/dashboard/Savings';
-// import ExpenseList from '../components/dashboard/ExpenseList';
+import classes from './Dashboard.module.css';
+import DonutChart from '../components/dashboard/DonutChart';
+
+// import BudgetingForm from '../components/dashboard/BudgetingForm';
 
 
 
@@ -34,11 +37,12 @@ const mockData = {
 function Dashboard() {
     return (
         <div>
-            <h1> My Dashboard</h1>
+            <h1 id={classes.head}> Burning Money Dashboard</h1>
             <Income />
             <Expense expenses={mockData.expenses} />
-            {/* <ExpenseList expenses={mockData.expenses} /> */}
             <Savings savings={mockData.savings} />
+            <DonutChart />
+            {/* <BudgetingForm /> */}
         </div>
     )
 

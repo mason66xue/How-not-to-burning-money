@@ -1,6 +1,9 @@
+import LoginForm from "./components/loginpage/LoginForm";
+import SignupForm from "./components/signup/SignupForm";
 import Dashboard from "./pages/Dashboard";
-// import { Doughnut } from 'react-chartjs-2';
-import DonutChart from './components/DonutChart';
+
+
+
 
 
 
@@ -9,9 +12,11 @@ import DonutChart from './components/DonutChart';
 
 function App() {
   return (
+
     <div>
-      <DonutChart />
-      <h1>Hello World</h1>
+
+      <SignupForm />
+      <LoginForm />
       <Dashboard />
 
     </div>
