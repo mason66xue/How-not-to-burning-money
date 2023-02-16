@@ -3,7 +3,7 @@ import Card from '../userinterface/Card';
 import { useMutation,useQuery } from '@apollo/client';
 import { SET_INCOME } from '../../utils/mutations';
 import authService from '../../utils/auth';
-import { QUERY_USER } from '../../utils/queries';
+// import { QUERY_USER } from '../../utils/queries';
 
 function Income() {
 
@@ -12,7 +12,7 @@ function Income() {
     // });
     // const userIncome = queryData.getUser.income;
 
-    const [inputState, setInputState] = useState(0); // user.income is undefined
+    const [inputState, setInputState] = useState({ income: '' });
 
     const [setIncome, { error, data }] = useMutation(SET_INCOME, {
         onError: (error) => {
@@ -24,12 +24,17 @@ function Income() {
     const handleChange = (event) => {
         const { id, value } = event.target;
         console.log("id and value changes")
-      console.log(id, value);
+        console.log(id, value);
+        console.log("++++++++++++++++++++++++++++++++++")
+        console.log("inputState before changes")
+        console.log(inputState);
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
         setInputState({
             ...inputState,
             [id]: value,
         });
-        console.log("inputState changes update")
+        console.log("inputState after changes")
         console.log(inputState);
         console.log("=================================")
     };
@@ -45,6 +50,7 @@ function Income() {
             console.log("data from login mutation")
             // use authService to grab token
             console.log(data);
+            console.log("#####################################")
             authService.login(data.setIncome.user.token);
         } catch (e) {
             console.error(e);
