@@ -64,9 +64,9 @@ function LandingPageComponent() {
                 </div>
             </section>
             <hr />
-            <div class="parallax">
-                <div class="parallax-background"></div>
-                <div class="parallax-content">
+            <div className="parallax">
+                <div className="parallax-background"></div>
+                <div className="parallax-content">
                 </div>
             </div>
             <hr />
@@ -130,9 +130,9 @@ function LandingPageComponent() {
                 </div>
             </section>
             <hr />
-            <div class="parallax">
-                <div class="parallax-background"></div>
-                <div class="parallax-content">
+            <div className="parallax">
+                <div className="parallax-background"></div>
+                <div className="parallax-content">
                 </div>
             </div>
             <hr />
@@ -179,9 +179,9 @@ function LandingPageComponent() {
                 </div>
             </section>
             <hr />
-            <div class="parallax">
-                <div class="parallax-background"></div>
-                <div class="parallax-content">
+            <div className="parallax">
+                <div className="parallax-background"></div>
+                <div className="parallax-content">
                 </div>
             </div>
             <hr />
