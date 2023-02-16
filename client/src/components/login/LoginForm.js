@@ -7,33 +7,60 @@ import classes from './LoginForm.module.css';
 import Card from '../userinterface/Card';
 
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import authService from '../../utils/auth';
 
 
 function LoginForm() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+ 
+    const [formState, setFormState] = useState({
+        email: '',
+        password: '',
+    });
+
     const [errorMessage, setErrorMessage] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        setIsLoading(true);
+    const [login, { error, data }] = useMutation(LOGIN_USER, {
+        onError: (error) => {
+            console.log('Error:', error.message);
+        }
+    });
 
-        axios
-            .post('https://example.com/api/login', {
-                username,
-                password,
-            })
-            .then(response => {
-                setIsLoading(false);
-                // Handle successful login
-            })
-            .catch(error => {
-                setIsLoading(false);
-                setErrorMessage('Incorrect username or password. Please try again.');
-            });
+    const handleChange = (event) => {
+        const { id, value } = event.target;
+        console.log("id and value changes")
+      console.log(id, value);
+        setFormState({
+            ...formState,
+            [id]: value,
+        });
+        console.log("formState changes update")
+        console.log(formState);
     };
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+        setErrorMessage('');
+
+        try {
+            const { data } = await login({
+                variables: { ...formState },
+            });
+            console.log("data from login mutation")
+            console.log(data.login.token);
+            // use authService to grab token
+            authService.login(data.login.token);
+        } catch (e) {
+            console.error(e);
+            setErrorMessage('Something went wrong. Please try again.');
+        }
+
+        // setIsLoading(false);
+    };
+
+    
 
     return (
 
@@ -42,14 +69,14 @@ function LoginForm() {
 
         <Card>
 
-            <form className={classes.form} onSubmit={handleSubmit}>
+            <form className={classes.form} onSubmit={handleFormSubmit}>
                 <div className={classes.control}>
                     <label htmlFor="username">Email:</label>
                     <input
                         type="text"
-                        id="username"
-                        value={username}
-                        onChange={event => setUsername(event.target.value)}
+                        id="email"
+                        value={formState.username}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className={classes.control}>
@@ -57,16 +84,16 @@ function LoginForm() {
                     <input
                         type="password"
                         id="password"
-                        value={password}
-                        onChange={event => setPassword(event.target.value)}
+                        value={formState.password}
+                        onChange={handleChange}
                     />
                 </div>
-                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                {/* {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 {isLoading ? (
                     <p>Loading...</p>
                 ) : (
-                    <button type="submit">Log In</button>
-                )}
+                )} */}
+                <button type="submit">Log In</button>
             </form>
         </Card>
 
