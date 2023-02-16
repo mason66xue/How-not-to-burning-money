@@ -64,6 +64,12 @@ function LandingPageComponent() {
                 </div>
             </section>
             <hr />
+            <div className="parallax">
+                <div className="parallax-background"></div>
+                <div className="parallax-content">
+                </div>
+            </div>
+            <hr />
             <h2>Testimonials</h2>
             <section id="testimonials">
                 <div className="testimonials">
@@ -124,9 +130,9 @@ function LandingPageComponent() {
                 </div>
             </section>
             <hr />
-            <div class="parallax">
-                <div class="parallax-background"></div>
-                <div class="parallax-content">
+            <div className="parallax">
+                <div className="parallax-background"></div>
+                <div className="parallax-content">
                 </div>
             </div>
             <hr />
@@ -172,16 +178,14 @@ function LandingPageComponent() {
                     </form>
                 </div>
             </section>
+            <hr />
+            <div className="parallax">
+                <div className="parallax-background"></div>
+                <div className="parallax-content">
+                </div>
+            </div>
+            <hr />
             <footer>Created in 2023 by GROUP 3</footer>
-
-
-
-
-
-
-
-
-
 
 
         </div>

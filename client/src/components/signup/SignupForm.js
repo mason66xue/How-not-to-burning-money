@@ -1,54 +1,75 @@
 
 // signup form
 
-// import React, { useState } from 'react';
+// signup form
 
 import classes from './SignupForm.module.css';
 import Card from '../userinterface/Card';
 
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
+const SignupForm = () => {
 
-function SignupForm() {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // use useState hook to create form state
+    const [formState, setFormState] = useState({
+        username: '',
+        email: '',
+        password: '',
+    });
+
+    // use useState hook to create error message state
     const [errorMessage, setErrorMessage] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = event => {
+    const [addUser, { error, data }] = useMutation(ADD_USER, {
+        onError: (error) => {
+          console.log('Error:', error.message);
+        }
+      });
+      
+
+    // update state based on form input changes
+    const handleChange = (event) => {
+        const { id, value } = event.target;
+
+        setFormState({
+            ...formState,
+            [id]: value,
+        });
+    };
+
+    // submit form
+    const handleFormSubmit = async (event) => {
         event.preventDefault();
-        setIsLoading(true);
 
-        axios
-            .post('https://example.com/api/login', {
-                username,
-                email,
-                password,
-            })
-            .then(response => {
-                setIsLoading(false);
-                // Handle successful login
-            })
-            .catch(error => {
-                setIsLoading(false);
-                setErrorMessage('Incorrect username or password. Please try again.');
+        setErrorMessage('');
+
+        try {
+            const { data } = await addUser({
+                variables: { ...formState },
             });
+
+            Auth.login(data.getProfile.token);
+        } catch (e) {
+            console.error(e);
+            setErrorMessage('Something went wrong. Please try again.');
+        }
+
+        // setIsLoading(false);
     };
 
     return (
-
         <Card>
-
-            <form className={classes.form} onSubmit={handleSubmit}>
+            <form className={classes.form} onSubmit={handleFormSubmit}>
                 <div className={classes.control}>
                     <label htmlFor="username">Name:</label>
                     <input
                         type="text"
                         id="username"
-                        value={username}
-                        onChange={event => setUsername(event.target.value)}
+                        value={formState.name}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -57,8 +78,8 @@ function SignupForm() {
                     <input
                         type="text"
                         id="email"
-                        value={email}
-                        onChange={event => setEmail(event.target.value)}
+                        value={formState.email}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -67,19 +88,49 @@ function SignupForm() {
                     <input
                         type="password"
                         id="password"
-                        value={password}
-                        onChange={event => setPassword(event.target.value)}
+                        value={formState.password}
+                        onChange={handleChange}
                     />
                 </div>
-                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                {/* {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 {isLoading ? (
-                    <p>Loading...</p>
+                    <p>Signing up...</p>
                 ) : (
-                    <button type="submit">Log In</button>
-                )}
+                    
+                )} */}
+                
+                <button type="submit">Sign Up</button>
             </form>
         </Card>
     );
-}
+};
 
 export default SignupForm;
+
+
+  // function SignupForm() {
+    //     const [username, setUsername] = useState('');
+    //     const [email, setEmail] = useState('');
+    //     const [password, setPassword] = useState('');
+    //     const [errorMessage, setErrorMessage] = useState('');
+    //     const [isLoading, setIsLoading] = useState(false);
+
+    //     const handleSubmit = event => {
+    //         event.preventDefault();
+    //         setIsLoading(true);
+
+    //         axios
+    //             .post('https://example.com/api/login', {
+    //                 username,
+    //                 email,
+    //                 password,
+    //             })
+    //             .then(response => {
+    //                 setIsLoading(false);
+    //                 // Handle successful login
+    //             })
+    //             .catch(error => {
+    //                 setIsLoading(false);
+    //                 setErrorMessage('Incorrect username or password. Please try again.');
+    //             });
+    //     };
