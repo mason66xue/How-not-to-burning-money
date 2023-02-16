@@ -7,14 +7,12 @@ const { authMiddleware } = require('./utils/auth');
 // Import the two parts of a GraphQL schema
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-const {introspection} = require('graphql');
 
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware,
-  // introspection: true
+  context: authMiddleware
 });
 
 const app = express();
