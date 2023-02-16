@@ -154,6 +154,25 @@ function LandingPageComponent() {
                     </div>
                 </div>
             </section>
+            <hr />
+            <section id="contact">
+                <div className="contact">
+                    <h2>Contact</h2>
+                    <form>
+                        <label htmlFor="name">Name:</label>
+                        <input type="text" id="name" name="name" />
+
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" id="email" name="email" />
+
+                        <label htmlFor="message">Message:</label>
+                        <textarea id="message" name="message" />
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </section>
+            <footer>Created in 2023 by GROUP 3</footer>
 
 
 
@@ -178,37 +197,3 @@ export default LandingPageComponent;
 
 
 
-//                     <hr>
-//                         <section id="contact">
-//                             <div class="contact">
-//                                 <h2>Contact</h2>
-//                                 <form>
-//                                     <label for="name">Name:</label>
-//                                     <input type="text" id="name" name="name">
-
-//                                         <label for="email">Email:</label>
-//                                         <input type="email" id="email" name="email">
-
-//                                             <label for="message">Message:</label>
-//                                             <textarea id="message" name="message"></textarea>
-
-//                                             <button type="submit">Submit</button>
-//                                         </form>
-//                                     </div>
-//                                 </section>
-
-
-
-
-
-
-
-
-
-//                             </div>
-//                             )
-
-
-// }
-
-//                             export default LandingPageComponent;
