@@ -1,27 +1,80 @@
 // Mutations
 
-import gql from 'graphql-tag';
+import{ gql } from '@apollo/client';
+
 
 export const ADD_USER = gql`
-
-mutation addUser($username: String!, $email: String!, $password: String!) {
-
-addUser(username: $username, email: $email, password: $password) {
-
-token
-
-user {
-
-_id
-
-username
-
-email
-
-}
-
-}
-
-}
-
+    mutatution addUser ($username: String!, $email: String!, $password: String!, $income: Int) {
+        addUser(username: $username, email: $email, password: $password, income: $income) {
+            token
+            user {
+                _id
+                username
+                income
+            }
+        }
+    }
 `;
+
+export const LOGIN_USER = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            token
+            user {
+                _id
+                username
+                income
+            }
+        }
+    }
+`;
+
+export const SET_INCOME = gql`
+    mutation setIncome($amount: Int!) {
+        setIncome(amount: $amount) {
+            _id
+            username
+            income
+        }
+    }
+`;
+
+
+export const ADD_EXPENSE = gql`
+    mutation addExpense($name: String!, $amount: Float!) {
+        addExpense(name: $name, amount: $amount) {
+            _id
+            username
+            income
+            expenses {
+                _id
+                name
+                amount
+            }
+        }
+    }
+`;
+
+
+export const ADD_SAVINGS = gql`
+    mutation addSavings($name: String!, $amount: Float!) {
+        addSavings(name: $name, amount: $amount) {
+            _id
+            username
+            income
+            savings {
+                _id
+                name
+                amount
+                
+                
+            }
+        }
+    }           
+`;
+
+
+export const REMOVE_EXPENSE = gql``;
+
+
+export const REMOVE_SAVINGS = gql``;
