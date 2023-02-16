@@ -6,6 +6,7 @@ import Layout from "./components/layout/Layout";
 import LandingPage from "./pages/LandingPage";
 const { Route, Routes } = require("react-router-dom");
 
+const { Route, Routes } = require("react-router-dom");
 
 
 
