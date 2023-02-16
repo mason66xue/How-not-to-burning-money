@@ -1,7 +1,23 @@
-{
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "react-parallax": "^3.5.1",
-    "chartjs-plugin-outerlabels": "^2.0.0"
+ {
+    "name": "burn-money",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/server.js",
+    "scripts": {
+      "start": "node server --ignore client",
+      "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+      "install": "cd server && npm i && cd ../client && npm i",
+      "seed": "cd server && npm run seed",
+      "build": "cd client && npm run build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "dotenv": "^16.0.3",
+       "chartjs-plugin-outerlabels": "^2.0.0"
+    },
+    "devDependencies": {
+      "concurrently": "^5.1.0"
+    }
   }
-}

@@ -1,5 +1,4 @@
-{
-  "name": "burn-money",
+{"name": "burn-money",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
