@@ -7,36 +7,36 @@ function Navbar() {
     return (
 
         <header className={classes.header}>
-            <div className={classes.logo}>Burning Money</div>
+            <div className={classes.logo}>🔥Burning Money🔥</div>
             <nav>
                 <ul>
 
                     <li>
-                        <Link to='/'>Home</Link>
+                        <Link to='/'>💰Home</Link>
                     </li>
 
                     <li>
-                        <a href="#about-us">About Us</a>
+                        <a href="/#about-us">💸About Us</a>
                     </li>
 
                     <li>
-                        <a href="#testimonials">Testimonials</a>
+                        <a href="/#testimonials">💵Testimonials</a>
                     </li>
 
                     <li>
-                        <a href="#contact">Contact</a>
+                        <a href="/#contact">🏦Contact</a>
                     </li>
 
                     <li>
-                        <Link to='/dashboard'>My Profile</Link>
+                        <Link to='/dashboard'>🤑My Profile</Link>
                     </li>
 
                     <li>
-                        <Link to='/login'>Log In</Link>
+                        <Link to='/login'>💎Log In</Link>
                     </li>
 
                     <li>
-                        <Link to='/signup'>Sign up</Link>
+                        <Link to='/signup'>💹Sign up</Link>
                     </li>
 
                 </ul>

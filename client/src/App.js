@@ -1,10 +1,10 @@
 
-const { Route, Routes } = require("react-router-dom");
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/layout/Layout";
 import LandingPage from "./pages/LandingPage";
+const { Route, Routes } = require("react-router-dom");
 
 
 
@@ -27,3 +27,5 @@ function App() {
 
 
 export default App;
+
+
