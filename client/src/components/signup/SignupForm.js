@@ -9,7 +9,7 @@ import Card from '../userinterface/Card';
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
-import Auth from '../../utils/auth';
+import authService from '../../utils/auth';
 
 const SignupForm = () => {
 
@@ -50,8 +50,11 @@ const SignupForm = () => {
             const { data } = await addUser({
                 variables: { ...formState },
             });
+            console.log("data from addUser mutation")
+            console.log(data);
 
-            Auth.login(data.getProfile.token);
+            // use authService to log in user
+            authService.login(data.addUser.token);
         } catch (e) {
             console.error(e);
             setErrorMessage('Something went wrong. Please try again.');
