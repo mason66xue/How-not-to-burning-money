@@ -1,7 +1,6 @@
 
 // signup form
 
-// import React, { useState } from 'react';
 
 import classes from './SignupForm.module.css';
 import Card from '../userinterface/Card';
