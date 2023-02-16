@@ -25,7 +25,7 @@ Welcome to the ultimate expese tracker, over here you can maximize your saving a
 To start the application, put ``` npm start develop ``` in the terminal to start both REACT and GraphQL server
 
 ## Credits
-- Link: [Zander Marenberg]( https://github.com/Zander-M75 'The github page for Zander.')
+- Link: [Jake Nguyen]( https://github.com/JakeTNguyen 'The github page for Jake.')
 - Link: [Zander Marenberg]( https://github.com/Zander-M75 'The github page for Zander.')
 - Link: [Ruochen Liu](https://github.com/mason66xue 'The github page for Ruochen.')
 - Link: [Jackie Zheng]( https://github.com/jackiezheng1998 'The github page for Jackie.')
