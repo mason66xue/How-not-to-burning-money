@@ -74,7 +74,33 @@ export const ADD_SAVINGS = gql`
 `;
 
 
-export const REMOVE_EXPENSE = gql``;
+export const REMOVE_EXPENSE = gql`
+    mutation removeExpense($expenseId: ID!) {
+        removeExpense(expenseId: $expenseId) {
+            _id
+            username
+            income
+            expenses {
+                _id
+                name
+                amount
+            }
+        }
+    }
+`;
 
 
-export const REMOVE_SAVINGS = gql``;
+export const REMOVE_SAVINGS = gql`
+    mutation removeSavings($savingsId: ID!) {   
+        removeSavings(savingsId: $savingsId) {
+            _id
+            username
+            income
+            savings {
+                _id
+                name
+                amount
+            }
+        }
+    }
+`;
