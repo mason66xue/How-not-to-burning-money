@@ -39,9 +39,9 @@ function Dashboard() {
         <div>
             <h1 id={classes.head}> Burning Money Dashboard</h1>
             <Income />
-            <Expense expenses={mockData.expenses} />
-            <Savings savings={mockData.savings} />
-            <DonutChart />
+            {/* <Expense expenses={""} /> */}
+            {/* <Savings savings={""} /> */}
+            {/* <DonutChart /> */}
             {/* <BudgetingForm /> */}
         </div>
     )

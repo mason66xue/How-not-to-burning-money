@@ -1,13 +1,58 @@
 import React, { useState } from 'react';
 import Card from '../userinterface/Card';
+import { useMutation,useQuery } from '@apollo/client';
+import { SET_INCOME } from '../../utils/mutations';
+import authService from '../../utils/auth';
+import { QUERY_USER } from '../../utils/queries';
 
 function Income() {
-    const [income, setIncome] = useState(0);
 
-    const handleClick = () => {
-        setIncome(income);
+    // const { data:queryData } = useQuery(QUERY_USER,{
+    //     variables: { email: authService.getProfile().data.email }
+    // });
+    // const userIncome = queryData.getUser.income;
+
+    const [inputState, setInputState] = useState(0); // user.income is undefined
+
+    const [setIncome, { error, data }] = useMutation(SET_INCOME, {
+        onError: (error) => {
+            console.log('Error:', error.message);
+        }
+    });
+
+
+    const handleChange = (event) => {
+        const { id, value } = event.target;
+        console.log("id and value changes")
+      console.log(id, value);
+        setInputState({
+            ...inputState,
+            [id]: value,
+        });
+        console.log("inputState changes update")
+        console.log(inputState);
+        console.log("=================================")
     };
 
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+
+        try {
+            const { data } = await setIncome({
+                variables: { inputState },
+            });
+            console.log("data from login mutation")
+            // use authService to grab token
+            console.log(data);
+            authService.login(data.setIncome.user.token);
+        } catch (e) {
+            console.error(e);
+        }
+
+    };
+
+  
     return (
         <Card>
             <div>
@@ -15,10 +60,11 @@ function Income() {
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <input
                         type="number"
-                        value={income}
-                        onChange={(e) => setIncome(e.target.value)}
+                        id="income"
+                        value={inputState.income}
+                        onChange={handleChange}
                     />
-                    {income && (
+                    {inputState && ( 
                         <div
                             style={{
                                 color: 'green',
@@ -26,14 +72,15 @@ function Income() {
                                 marginLeft: '10px',
                             }}
                         >
-                            {income}
+                            {inputState.income}
                         </div>
                     )}
                 </div>
-                <button onClick={handleClick}>Set Income</button>
+                <button onClick={handleFormSubmit}>Set Income</button>
             </div>
         </Card>
     );
+
 }
 
 export default Income;
@@ -41,55 +88,4 @@ export default Income;
 
 
 
-
-// import React, { useState } from 'react';
-// import Card from '../userinterface/Card';
-
-// function Income() {
-//     const [income, setIncome] = useState(0);
-
-//     return (
-//         <Card>
-//             <div>
-//                 <h1>Income</h1>
-//                 <div style={{ display: "flex", alignItems: "center" }}>
-//                     <input
-//                         type="number"
-//                         value={income}
-//                         onChange={(e) => setIncome(e.target.value)}
-//                     />
-//                     <div style={{ color: "green", fontSize: "24px", marginLeft: "50px" }}>
-//                         {income}
-//                     </div>
-//                 </div>
-//                 <button>Set Income</button>
-//             </div>
-//         </Card>
-//     );
-// }
-
-// export default Income;
-
-
-
-// import React, { useState } from 'react';
-// import Card from '../userinterface/Card'
-
-
-// function Income() {
-//     const [income, setIncome] = useState(0);
-
-//     return (
-
-//         <Card>
-//             <div>
-//                 <h1>Income</h1>
-//                 <input type="number" value={income} onChange={e => setIncome(e.target.value)} />
-//                 <button>Set Income</button>
-//             </div>
-//         </Card>
-//     )
-// }
-
-// export default Income;
 
