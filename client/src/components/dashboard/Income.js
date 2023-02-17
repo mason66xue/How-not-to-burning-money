@@ -3,9 +3,9 @@ import Card from '../userinterface/Card';
 import { useMutation } from '@apollo/client';
 import { SET_INCOME } from '../../utils/mutations';
 import authService from '../../utils/auth';
+function Income(props) {
+var tolken ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiamFrZUB0ZXN0LmNvbSIsInVzZXJuYW1lIjoiamFrZSIsIl9pZCI6IjYzZWNkZWRmYTkxZTNkNmUwZmVmM2M3YyJ9LCJpYXQiOjE2NzY1OTk1MDgsImV4cCI6MTY3NjYwNjcwOH0.hvPkXzD5cmkOngwymtC_3ygfMxv6CRa6zyVLe7xImDk"
 
-function Income() {
- 
     const [formState, setFormState] = useState({
         amount: 0,
     });
@@ -39,11 +39,14 @@ function Income() {
             console.log("formState from handleFormSubmit")
             console.log(formState)
             const { data } = await setIncome({
-                variables: {amount:5400}
+                // variables: {amount:5400}
             });
             console.log("data from login mutation")
-            // use authService to grab token
-            // authService.login(data.setIncome.token);
+            console.log(data);
+            // use authService to verify token
+            // authService.login(data.setFormState.token);
+
+            // authService.login(tolken);
         } catch (e) {
             console.error(e);
             setErrorMessage('Something went wrong. Please try again.');

@@ -6,7 +6,13 @@ const resolvers = {
     Query: {
         getUser: async (parent, {email}) => {
             return await User.findOne({email});
-        }
+        },
+        me: async (parent, args, context) => {
+            if (context.user) {
+              return Profile.findOne({ _id: context.user._id });
+            }
+            throw new AuthenticationError('You need to be logged in!');
+          }
     },
     Mutation: {
         addUser: async (parent, args) => {
